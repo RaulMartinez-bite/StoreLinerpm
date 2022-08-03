@@ -22,6 +22,18 @@ class CategoryController extends Controller
 
     public function insert(Request $request)
     {
+        $this -> validate($request,[
+        'name' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/', 
+        'slug' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'description' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'status' => 'required|',
+        'popular' => 'required|',
+        'image' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'meta_title' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'meta_descrip' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'meta_keywords' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/' ,
+        ]);
+
         $category = new Category();
         if($request->hasFile('image'))
         {
@@ -52,6 +64,18 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+    $this -> validate($request,[
+        'name' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/', 
+        'slug' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'description' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'status' => 'required|',
+        'popular' => 'required|',
+        'image' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'meta_title' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'meta_descrip' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+        'meta_keywords' => 'required| regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/' ,
+        ]);
+
         $category = Category::find($id);
         if($request->hasFile('image'))
         {
